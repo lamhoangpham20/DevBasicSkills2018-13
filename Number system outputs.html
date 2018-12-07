@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number system outputs</title>
+<style>
+.divTable { display: table;      border-collapse:collapse; }
+.divTr    { display: table-row; }
+.divTr:hover { background-color: lightgray; }
+.divTd    { display: table-cell; border: 1px solid black; text-align: right; padding: 5px 10px 5px 10px; }
+.divTdh   { display: table-cell; border: 1px solid black; text-align: center; padding: 5px 10px 5px 10px; font-weight: bold; background-color: lightgray;}
+</style>
+</head>
+<body>
+
+<script type="text/javascript">
+function fillTable()
+{
+    var radixes = [10, 2, 8, 16]; //Radixes used in cell creation loop for number conversion
+
+    //Create 50 rows to table
+    for(var row=0; row<51; row++)
+    { 
+        //Create row div
+        var divTr = document.createElement('div');
+        divTr.setAttribute('class', 'divTr');
+
+        //Create cell divs and append to row div
+        for(var i=0; i<radixes.length; i++)
+        {
+            var divElem = document.createElement('div');
+            divElem.setAttribute('class', 'divTd');
+            divElem.innerHTML = row.toString(radixes[i]); //Converts number to dec (10), bin (2), oct (8) or hex (16)
+            divTr.appendChild(divElem);
+        }
+
+        //Append row div to table div
+        document.getElementById("divTable").appendChild(divTr);
+    }
+} //end of function fillTable()
+
+function clearTable()
+{
+    //Find all cells using divTd class and set content empty character (&nbsp;)
+    var cells = document.getElementsByClassName("divTd");
+
+    for(var i=0; i<cells.length; i++)
+    {
+        cells[i].innerHTML = "&nbsp;";
+    }
+}
+</script>
+
+<h1>Number system outputs</h1>
+
+<div id="divTable" class="divTable">
+    <div class="divTr">
+        <div class="divTdh">DEC</div>
+        <div class="divTdh">BIN</div>
+        <div class="divTdh">OCT</div>
+        <div class="divTdh">HEX</div>
+    </div>
+</div>
+
+<script>fillTable();</script>
+
+<p></p>
+<button type="button" onclick="clearTable()">Clear table</button>
+
+</body>
+</html>
