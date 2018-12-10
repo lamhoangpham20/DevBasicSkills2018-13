@@ -14,7 +14,10 @@ function BinConvert()
 {
     var y = document.getElementById('binary').value;
     y = y.toString();
-   
+    y = parseInt(y, 2);
+    var dec = y.toString(10);
+    var hex = y.toString(16).toUpperCase();
+    var oct = y.toString(8);
     if( y.indexOf(2) != -1 || y.indexOf(2) != -1 || y.indexOf(3) != -1 ||
     y.indexOf(4) != -1 || y.indexOf(5) != -1 || y.indexOf(6) != -1 || y.indexOf(7) != -1 ||
     y.indexOf(8) != -1 || y.indexOf(9) != -1 )
@@ -27,10 +30,7 @@ function BinConvert()
     }
     else
     {
-    y = parseInt(y, 2);
-    var dec = y.toString(10);
-    var hex = y.toString(16).toUpperCase();
-    var oct = y.toString(8);
+    
     document.getElementById('bintodec').innerHTML = dec; 
     document.getElementById('bintohex').innerHTML = hex;
     document.getElementById('bintooct').innerHTML = oct;
@@ -58,7 +58,7 @@ function HexConvert()
     document.getElementById('hextodec').innerHTML = dec; 
     document.getElementById('hextobin').innerHTML = bin;
     document.getElementById('hextooct').innerHTML = oct;
-    document.getElementById('hexwarning').innerHTML = "";
+    document.getElementById('hexwarning').innerHTML = ""; 
     }
 }
 

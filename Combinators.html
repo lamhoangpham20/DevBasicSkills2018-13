@@ -1,0 +1,73 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <script src="Combinators.js"></script>
+    <style>
+        #Show1 
+        {
+            display: none;
+        }
+        #Show2
+        {
+            display: none;
+        }
+        #Show3 
+        {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button type="menu" onclick="Show1()">Combination</button>
+        <button type="menu" onclick="Show2()">Permutation</button>
+        <button type="menu" onclick="Show3()">Permutation2</button>
+    </div><br>
+    <div id="Show1">
+    <div>Enter n :
+        <input type="number" id="nC" value="">
+    </div>
+    <div>Enter k :
+        <input type="number" id="kC" value="">
+    </div>
+    <button type="button" onclick="Combination()">Click</button>
+    <table>
+    <tr>
+        <td>Combination : </td>
+        <td><div id="result1"></div></td>
+    </tr>
+    </table>
+    </div>
+    <div id="Show2">
+        <div>Enter n:
+            <input type="number" id="nP" value="">
+        </div>
+        <div> Enter k: 
+            <input type="number" id="kP" value="">
+        </div>
+        <button type="button" onclick="Permutation1()">Click</button>
+    <table>
+    <tr>
+        <td>Permutation : </td>
+        <td><div id="result2"></div></td>
+    </tr>
+    </table>
+    </div>
+    <div id="Show3">
+        <div>Enter n:
+            <input type="number" id="nA" value="">
+        </div>
+        <div> Enter k: 
+            <input type="number" id="kA" value="">
+        </div>
+        <button type="button" onclick="Permutation2()">Click</button>
+    <table>
+    <tr>
+        <td>Permutation : </td>
+        <td><div id="result3"></div></td>
+    </tr>
+    </table>
+    </div>
+    
+</body>
+</html>
