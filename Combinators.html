@@ -1,11 +1,12 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="Main_Page.css">
     <script src="Combinators.js"></script>
     <style>
         #Show1 
         {
-            display: none;
+            display: block;
         }
         #Show2
         {
@@ -15,13 +16,32 @@
         {
             display: none;
         }
+        .button :hover
+        {
+            background-color: red
+        }
+        .button :active
+        {
+            background-color: grey;
+        }
     </style>
 </head>
 <body>
+        <div id="Background"></div>
+        <div id="menu_top">
+            <ul>
+                    <li><a href="./MainPage.html" title="Home">Home</a></li>
+                    <li><a href="./Number Converter.html" title="Number Converter">Number Converter</a></li>
+                    <li><a href="./Number system outputs.html" title="Number System Output">Number System Output</a></li>
+                    <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
+                    <li><a href="./Truth table.html" title="Truth table">Truth Table</a></li>
+                    <li><a href="./Random values.html" title="Random Generators">Random Generators</a></li>
+            </ul>
+        </div><br>
     <div>
-        <button type="menu" onclick="Show1()">Combination</button>
-        <button type="menu" onclick="Show2()">Permutation</button>
-        <button type="menu" onclick="Show3()">Permutation2</button>
+        <button class="button" type="menu" onclick="Show1()">Combination</button>
+        <button class="button" type="menu" onclick="Show2()">Permutation</button>
+        <button class="button" type="menu" onclick="Show3()">Permutation2</button>
     </div><br>
     <div id="Show1">
     <div>Enter n :
@@ -48,7 +68,7 @@
         <button type="button" onclick="Permutation1()">Click</button>
     <table>
     <tr>
-        <td>Permutation : </td>
+        <td>Permutation with replacement : </td>
         <td><div id="result2"></div></td>
     </tr>
     </table>
@@ -63,7 +83,7 @@
         <button type="button" onclick="Permutation2()">Click</button>
     <table>
     <tr>
-        <td>Permutation : </td>
+        <td>Permutation without replacement : </td>
         <td><div id="result3"></div></td>
     </tr>
     </table>

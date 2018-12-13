@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="Main_Page.css">
+    <script src="Number_Converter.js"></script>
+    <style>
+        #Box
+        {
+            width: 40%;
+            height: 50%;
+            background-color: pink;
+            border: 2px solid black; 
+            margin-left: 85px; 
+            margin-top : 85px;
+        }
+        #box1
+        {
+         display: block;
+        }
+        #box2
+        {
+         display: none;
+        }
+        #box3
+        {
+         display: none;
+        }
+        #box4
+        {
+         display: none;
+        }
+
+    </style>
+</head>
+<body>
+      <div id="Background"></div>
+      <div id="menu_top">
+          <ul>
+               <li><a href="./Main_Page.html" title="Home">Home</a></li>
+               <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
+               <li><a href="./Number_system outputs.html" title="Number System Output">Number System Output</a></li>
+               <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
+               <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
+               <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
+          </ul>
+      </div>
+      <div id="box1">
+    <div id="Box"><h1>Conversion</h1>
+        <div>Decimal : <input id="decimal" type="number" value=""></div>
+        <div>
+        <button type="button" name="convert" onclick="DecConvert()">Convert</button></div>
+        <table>
+           <tr>
+              <td>Binary:</td>
+              <td><div id="dectobin"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Hexadecimal :</td>
+              <td><div id="dectohex"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Octal :</td>
+              <td><div id="dectooct"></div></td>
+           </tr>
+     </table>
+     <div id="decwarning"></div>
+    </div>
+   </div>
+   <div id="box2">
+    <div id="Box">
+        <h1>Conversion</h1>
+        <div>Binary : <input id="binary" type="number" value=""></div>
+        <div>
+        <button type="button" name="convert" onclick="BinConvert()">Convert</button></div>
+        <table>
+           <tr>
+              <td>Decimal : </td>
+              <td><div id="bintodec"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Hexadecimal :</td>
+              <td><div id="bintohex"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Octal :</td>
+              <td><div id="bintooct"></div></td>
+           </tr>
+     </table>
+     <div id="binwarning"></div> 
+    </div>
+   </div>
+   <div id="box3">
+    <div id="Box">
+        <h1>Conversion</h1>
+        <div>Hexadecimal : <input id="hexadecimal" type="number/text" value=""></div>
+        <div>
+        <button type="button" name="convert" onclick="HexConvert()">Convert</button></div>
+        <table>
+           <tr>
+              <td>Decimal : </td>
+              <td><div id="hextodec"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Binary :</td>
+              <td><div id="hextobin"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Octal :</td>
+              <td><div id="hextooct"></div></td>
+           </tr>
+     </table>
+     <div id="hexwarning"></div>
+    </div>
+   </div>
+   <div id="box4">
+    <div id="Box">
+        <h1>Conversion</h1>
+        <div>Octal : <input id="octal" type="number" value=""></div>
+        <div>
+        <button type="button" name="convert" onclick="OctConvert()">Convert</button></div>
+        <table>
+           <tr>
+              <td>Decimal : </td>
+              <td><div id="octtodec"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Binary :</td>
+              <td><div id="octtobin"></div></td>
+           </tr>
+        </table>
+        <table>
+           <tr>
+              <td>Hexadecimal :</td>
+              <td><div id="octtohex"></div></td>
+           </tr>
+     </table>
+     <div id="octwarning"></div>
+    </div>
+   </div><br>
+    <div> 
+      <button type="button" onclick="Showbox1()">Decimal convert</button>
+      <button type="button" onclick="Showbox2()">Binary convert</button>
+      <button type="button" onclick="Showbox3()">Hexadecimal convert</button>
+      <button type="button" onclick="Showbox4()">Octaldecimal convert</button>
+   </div>
+</body>
+</html>
