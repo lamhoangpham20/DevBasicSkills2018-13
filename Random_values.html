@@ -5,9 +5,26 @@
 <title>Random number generator test tool</title>
 <style>
 .inputNumber { width: 4em; }
-.svgChart { border: 1px solid black; }
-.rectBar  { fill: lightblue; }
-.rectText { fill: black; }
+.chart {  position: relative; }
+.chartBars { }
+.chartBarNumbers { }
+.bar {
+    border: 1px solid black;
+    background-color: lightblue;
+    width: 2em;
+    display: inline-block;
+    border-radius: 5px 5px 0px 0px; 
+}
+.barNumber {
+    border: 1px solid white;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    text-align: right;
+    vertical-align: middle;
+    transform: rotate(-90deg);
+    display: table-cell;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="Main_Page.css">
 </head>
@@ -15,43 +32,41 @@
         <div id="Background"></div>
         <div id="menu_top">
             <ul>
-                <li><a href="./Main_Page.html" title="Home">Home</a></li>
-                <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
-                <li><a href="./Number_system_outputs.html" title="Number System Output">Number System Output</a></li>
-                <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
-                <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
-                <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
+                    <li><a href="./Main_Page.html" title="Home">Home</a></li>
+            <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
+            <li><a href="./Number_system outputs.html" title="Number System Output">Number System Output</a></li>
+            <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
+            <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
+            <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
             </ul>
         </div>
 <script type="text/javascript">
-const CHART_BAR_WIDTH_PX = 20;         //Horizontal width of chart bar
-const CHART_BAR_HEIGHT_STEP_PX = 10;   //How many pixels each step (distribution amount) should be
-const CHART_SPACE_BETWEEN_BARS_PX = 2; //How many pixels space there is between chart bars
 
 var randomNumbers = []; //Random numbers to test are stored to this global variable
 var randomRangeMin;     //To be able to check proper distribution we need to know random generator range min
 var randomRangeMax;     //To be able to check proper distribution we need to know random generator range max
 
 
-//This is called when user clicks Test-button
-function testRandomNumbersDistribution()
+function testRandomNumbersDistribution() //This is called when user clicks Test-button
 {
     if(generateRandomNumbers() == true)
     {
-        //Only draw chart if random numbers are succesfully generated (return value true)
+        //Only draw chart if random numbers are succesfully generated (return value was true)
         drawRandomDistributionChart();
     }
 }
 
 
-function generateRandomNumbers()
+function generateRandomNumbers() //Function for generating random numbers for given range
 {
     //Clear old distribution chart
-    document.getElementById("distributionDiv").innerHTML = '';
+    document.getElementById("chartBars").innerHTML = '';
+    document.getElementById("chartBarNumbers").innerHTML = '';
+    document.getElementById("chart").style.width = '0px'
 
     //Get user input
-    randomRangeMin = parseInt(document.getElementById("rangeMin").value); //Saved to global variable
-    randomRangeMax = parseInt(document.getElementById("rangeMax").value); //Saved to global variable
+    randomRangeMin = parseInt(document.getElementById("rangeMin").value); //Stored to global variable
+    randomRangeMax = parseInt(document.getElementById("rangeMax").value); //Stored to global variable
     var amount     = parseInt(document.getElementById("amount").value);
 
     //Check that user input is correct, min must be between 1-99, max must be between 2-100,
@@ -64,29 +79,25 @@ function generateRandomNumbers()
         return false;
     }
 
-
     //Fill array with random numbers
     randomNumbers = [];
     for(var i=0; i<amount; i++)
     {
-        randomNumbers[i] = Math.floor((Math.random() * randomRangeMax) + randomRangeMin);
+        randomNumbers[i] = Math.floor((Math.random() * randomRangeMax) + randomRangeMin); //Stored to global variable
     }
 
     return true;
 }
 
 
-function drawRandomDistributionChart()
+function drawRandomDistributionChart() //Function draws random number distribution chart
 {
-    //Counter to count how many bars has been added to chart
-    var barCounter = 0;
-    
-    //Create empty SVG image
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    
-    //Go through random range (min, max) and count from generated random number how many times each number was generated.
+    var barCount = 0; //Counting how many bars was added, using this info for adjusting chart width later on
+   var maxFound = 0;
+    //Go through random range (from min to max)
     for(var rangeIdx=randomRangeMin; rangeIdx<=randomRangeMax; rangeIdx++)
     {
+        //Count how many times number was generated
         var howManyTimesNumberGenerated = 0;
         for(var i=0; i<randomNumbers.length; i++)
         {
@@ -95,44 +106,48 @@ function drawRandomDistributionChart()
                 howManyTimesNumberGenerated++;
             }
         }
+
+        if(maxFound < howManyTimesNumberGenerated)
+            maxFound = howManyTimesNumberGenerated;
+        //Create div for bar which shows how many times number was generated
+        var bar = document.createElement('div');
+        bar.setAttribute('class', 'bar');
+        bar.setAttribute('title', 'Number ' + rangeIdx + ' was generated ' + howManyTimesNumberGenerated + ' times');
+        bar.style.height = howManyTimesNumberGenerated + 'em';
+
+        document.getElementById("chartBars").appendChild(bar);
+
+        //Create div for bar text (number)
+        var text = document.createElement('div');
+        text.setAttribute('class', 'barNumber');
+        text.innerHTML = rangeIdx;
+        document.getElementById("chartBarNumbers").appendChild(text);
         
-        //Then create bar (rectangle) to distribution chart for every number in range
-        //var svg = document.getElementById('randomDistribution');
-        var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rect.setAttribute('x', barCounter*(CHART_BAR_WIDTH_PX+CHART_SPACE_BETWEEN_BARS_PX));
-        rect.setAttribute('y', 0);
-        rect.setAttribute('width', CHART_BAR_WIDTH_PX+'px');
-        rect.setAttribute('height', (howManyTimesNumberGenerated*CHART_BAR_HEIGHT_STEP_PX)+'px');
-        rect.setAttribute('class', 'rectBar');
-
-        //Add title to rect so user can see actual values by hovering mouse on top of bar
-        var title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        title.textContent = 'Random number ' + rangeIdx + ' generated ' + howManyTimesNumberGenerated + ' times';
-        rect.appendChild(title);
-
-        svg.appendChild(rect); //Add rectangle to svg image
-
-        barCounter++;
+        barCount++;
     }
-
-    svg.setAttribute('class', 'svgChart');
-    svg.setAttribute('width', (barCounter*(CHART_BAR_WIDTH_PX + CHART_SPACE_BETWEEN_BARS_PX))-CHART_SPACE_BETWEEN_BARS_PX );
-    document.getElementById("distributionDiv").appendChild(svg);
+    //Finally adjust char div width so it does not wrap to multiple rows if random range is very long (goes outside screen)
+    document.getElementById("chart").style.width = 'calc(' + (barCount * 2) + 'em + ' + (barCount * 2) + 'px)';
 }
 </script>
 
 <h1>Random number generator test tool</h1>
 
 <p>
-To generate randon number test material, enter random number range (positive integers only) and amount,<br>
-then click button to see chart showing random number distribution:<br>
+To generate randon number test material,<br>enter random number range (positive integers only) and amount,<br>
+then click button to see chart showing random number distribution.<br>
+</p>
+
+<p>
 Min:    <input type="number" id="rangeMin" value="1"   min="1" max="99"   step="1" class="inputNumber"> 
-Max:    <input type="number" id="rangeMax" value="25"  min="2" max="100"  step="1" class="inputNumber"> 
+Max:    <input type="number" id="rangeMax" value="10"  min="2" max="100"  step="1" class="inputNumber"> 
 Amount: <input type="number" id="amount"   value="100" min="1" max="1000" step="1" class="inputNumber"> 
 <button type="button" onclick="testRandomNumbersDistribution()">Test</button>
 </p>
+<div class="chart" id="chart">
+    <div class="chartBars" id="chartBars"></div>
+    <div class="chartBarNumbers" id="chartBarNumbers"></div>
+</div>
 
-<div id="distributionDiv"></div>
 
 </body>
 </html>

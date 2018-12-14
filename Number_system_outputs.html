@@ -5,40 +5,46 @@
 <title>Number system outputs</title>
 <link rel="stylesheet" type="text/css" href="Main_Page.css">
 <style>
-    body
-    {
-        display: block;
-    }
-.divTable { display: table;      border-collapse:collapse; }
-.divTr    { display: table-row; }
+body { display: block; }
+.divTableContainer { display: flex; flex-direction: row; justify-content: center; margin: auto; }
+.divTable  { display: table; border-collapse:collapse; margin: 2em;}
+.divTr      { display: table-row; }
 .divTr:hover { background-color: lightgray; }
-.divTd    { display: table-cell; border: 1px solid black; text-align: right; padding: 5px 10px 5px 10px; }
-.divTdh   { display: table-cell; border: 1px solid black; text-align: center; padding: 5px 10px 5px 10px; font-weight: bold; background-color: lightgray;}
+.divTd     { display: table-cell; border: 1px solid black; text-align: right; padding: 5px 10px 5px 10px; text-transform: uppercase; }
+.divTdh    { display: table-cell; border: 1px solid black; text-align: center; padding: 5px 10px 5px 10px; font-weight: bold; background-color: lightgray;}
 </style>
 <div id="Background"></div>
 <div id="menu_top">
     <ul>
-        <li><a href="./Main_Page.html" title="Home">Home</a></li>
-        <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
-        <li><a href="./Number_system_outputs.html" title="Number System Output">Number System Output</a></li>
-        <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
-        <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
-        <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
+            <li><a href="./Main_Page.html" title="Home">Home</a></li>
+            <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
+            <li><a href="./Number_system outputs.html" title="Number System Output">Number System Output</a></li>
+            <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
+            <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
+            <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
     </ul>
 </div>
 </head>
 <body>
-        
+
 <script type="text/javascript">
 function fillTable()
 {
+    //Clear rows if they exists, needed if pressing fill button
+    for(var r=0; r<51; r++)
+    { 
+        var e = document.getElementById('divTr'+r);
+        if(e != null) { e.remove(); }
+    }
+    
     var radixes = [10, 2, 8, 16]; //Radixes used in cell creation loop for number conversion
 
-    //Create 50 rows to table
+    //Create 50 rows to tables
     for(var row=0; row<51; row++)
     { 
         //Create row div
         var divTr = document.createElement('div');
+        divTr.setAttribute('id', 'divTr'+row);
         divTr.setAttribute('class', 'divTr');
 
         //Create cell divs and append to row div
@@ -51,9 +57,16 @@ function fillTable()
         }
 
         //Append row div to table div
-        document.getElementById("divTable").appendChild(divTr);
+        if(row < 26)
+        {   //Rows 0-25 goes to first table
+            document.getElementById("divTable1").appendChild(divTr);
+        }
+        else
+        {   //Rows 26-50 goes to second table
+            document.getElementById("divTable2").appendChild(divTr);
+        }
     }
-} //end of function fillTable()
+}
 
 function clearTable()
 {
@@ -63,29 +76,33 @@ function clearTable()
     {
         cells[i].innerHTML = "&nbsp;";
     }
-
-
 }
-
-
 </script>
 
 <h1>Number system outputs</h1>
+<button type="button" onclick="clearTable()">Clear tables</button>
+<button type="button" onclick="fillTable()">Fill tables</button>
 
-<div id="divTable" class="divTable">
-    <div class="divTr">
-        <div class="divTdh">DEC</div>
-        <div class="divTdh">BIN</div>
-        <div class="divTdh">OCT</div>
-        <div class="divTdh">HEX</div>
+<div class="divTableContainer">
+    <div id="divTable1" class="divTable">
+        <div class="divTr">
+            <div class="divTdh">DEC</div>
+            <div class="divTdh">BIN</div>
+            <div class="divTdh">OCT</div>
+            <div class="divTdh">HEX</div>
+        </div>
+    </div>
+    <div id="divTable2" class="divTable">
+        <div class="divTr">
+            <div class="divTdh">DEC</div>
+            <div class="divTdh">BIN</div>
+            <div class="divTdh">OCT</div>
+            <div class="divTdh">HEX</div>
+        </div>
     </div>
 </div>
 
 <script>fillTable();</script>
 
-
-
 </body>
-<p></p>
-<button type="button" id="button" onclick="clearTable()">Clear table</button>
 </html>
