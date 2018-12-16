@@ -6,8 +6,11 @@
 <style>
 .inputNumber { width: 5em; }
 .generatedLottoNumbers { font-size: 200%; width: 10em; color: black;}
+.simulationResultList { display: inline-block; text-align: left;}
 </style>
+
 <link rel="stylesheet" type="text/css" href="Main_Page.css">
+
 </head>
 <body class="blue center">
         <div id="Background"></div>
@@ -19,7 +22,7 @@
                 <li><a href="./Combinators.html" title="combinatorics" class="lightblue">Conbinatorics</a></li>
                 <li><a href="./Truth_table.html" title="Truth table" class="lightgreen">Truth Table</a></li>
                 <li><a href="./Random_values.html" title="Random Generators" class="green">Random Generators</a></li>
-                <li><a href="./Lotto_Simulator.html" title="Lotto" class="blue">Lotto</a></li>
+                <li><a href="./Lotto_Simulator.html" title="Lotto Simulator" class="blue">Lotto Simulator</a></li>
             </ul>
         </div>
 <script type="text/javascript">
@@ -86,12 +89,12 @@ function runLottoSimulation()
            (numbersCorrect == 3 && extraNumberCorrect == true)) //only 3+1 can win, not 3 alone
         {
             roundLottoNumbers.sort(function(a, b){return a - b}); //Numeric sort Lotto numbers for printing
-            var winText = ''+numbersCorrect;
+            var winText = '<b>'+numbersCorrect;
             if( (numbersCorrect == 6 || numbersCorrect == 3) && extraNumberCorrect == true )
             {
                 winText = winText + '+1'
             }
-            winText = winText + ' correct. Round ' + (r+1) + ':  ' + roundLottoNumbers + '+' + extraNumber;
+            winText = winText + '</b> correct. Round ' + (r+1) + ':  ' + roundLottoNumbers + '+' + extraNumber;
             if(numbersCorrect == 7 || numbersCorrect == 6)
                 console.log(winText);
             var liItem=document.createElement('li');
@@ -99,9 +102,8 @@ function runLottoSimulation()
             document.getElementById("simulationResultList").appendChild(liItem);
         }
     }
-
     var liItem=document.createElement('li');
-    liItem.innerHTML = '### Simulation done ###';
+    liItem.innerHTML = '### Simulation end ###';
     document.getElementById("simulationResultList").appendChild(liItem);
     document.getElementById('clearButton').disabled = false; //Enable clear button, there is now something to clear
 }
@@ -114,7 +116,7 @@ function clearResults()
 
 </script>
 
-<h1>Lotto simulator</h1>
+<h1>Lotto Simulator</h1>
 
 1. Generate Lotto numbers:<br>
 <input type="text" disabled id="generatedLottoNumbers" class="generatedLottoNumbers">&nbsp;<button type="button" onclick="generateUserLottoNumbers()">Generate</button>
@@ -123,8 +125,11 @@ function clearResults()
 Lotto rounds (weeks): <input type="number" id="rounds" value="1000" min="1" max="10000" step="1" class="inputNumber"> 
 <button type="button" disabled onclick="runLottoSimulation()" id="runButton">Run simulation</button>
 <button type="button" disabled onclick="clearResults()" id="clearButton">Clear results</button>
-<ul id="simulationResultList">
+
+<div>
+<ul id="simulationResultList" class="simulationResultList">
 </ul>
+</div>
 
 </body>
 </html>
