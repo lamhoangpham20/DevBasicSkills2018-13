@@ -9,11 +9,12 @@ function generate_table()
   {
     for (j=0 ; j<2 ; j++)
     {
-      var a = i || j;
-      var b = i && j;
-      var c = i === j;
-      var d = !i;
-      var e = (i||j)&&!(i&&j);
+      var a = i || j; // or
+      var b = i && j; // and
+      var c = i === j; //xnor
+      var d = !i; // opposite
+      var e = (i||j)&&!(i&&j); 
+      // return boolean expression to 1 and 0
       if (d==true)
       {
         d=1;

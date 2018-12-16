@@ -86,7 +86,7 @@ function OctConvert()
     document.getElementById('octwarning').innerHTML = "";
     }
 }
-
+// Display Decimal convert
 function Showbox1()
 {
     document.getElementById("box1").style.display = "block";
@@ -94,7 +94,7 @@ function Showbox1()
     document.getElementById("box3").style.display = "none";
     document.getElementById("box4").style.display = "none";
 }
-
+//Display binary convert
 function Showbox2()
 {
     document.getElementById("box1").style.display = "none";
@@ -102,7 +102,7 @@ function Showbox2()
     document.getElementById("box3").style.display = "none";
     document.getElementById("box4").style.display = "none";
 }
-
+//Display hexadecimal convert
 function Showbox3()
 {
     document.getElementById("box1").style.display = "none";
@@ -110,7 +110,7 @@ function Showbox3()
     document.getElementById("box3").style.display = "block";
     document.getElementById("box4").style.display = "none";
 }
-
+//Displat octaldecimal convert
 function Showbox4()
 {
     document.getElementById("box1").style.display = "none";

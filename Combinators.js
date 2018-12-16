@@ -5,14 +5,17 @@ function Combination()
     if (n > k)
     {
     var x = n - k ;
+    //factorial of x
     for(let i = x-1; i >0; i--)
     {
         x = x * i ;   
     } 
+    //factorial of n
     for(let i = n-1; i >0; i--)
     {
       n = n * i ;   
     }  
+    //factorial of k
     for(let i = k-1; i >0; i--)
     {
         k = k * i ;   
@@ -40,13 +43,15 @@ function Permutation1()
 {
     var n = document.getElementById('nP').value;
     var k = document.getElementById('kP').value;
-    if (n > k)
+    if (n > k) 
     {
         var x = n - k;
+        //factorial of n
     for(let i = n-1; i >0; i--)
     {
       n = n * i ;   
     }  
+    //factorial of x
     for(let i = x-1; i >0; i--)
     {
         x = x * i ;   
