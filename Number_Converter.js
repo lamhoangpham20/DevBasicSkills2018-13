@@ -2,7 +2,7 @@ function DecConvert()
 {
 var x = document.getElementById('decimal').value;
 x = parseInt(x);
-var bin = x.toString(2);
+var bin = (x>>>0).toString(2);
 var hex = x.toString(16).toUpperCase();
 var oct = x.toString(8);
 document.getElementById('dectobin').innerHTML = bin; 
@@ -14,12 +14,9 @@ function BinConvert()
 {
     var y = document.getElementById('binary').value;
     y = y.toString();
-    y = parseInt(y, 2);
-    var dec = y.toString(10);
-    var hex = y.toString(16).toUpperCase();
-    var oct = y.toString(8);
-    if( y.indexOf(2) != -1 || y.indexOf(2) != -1 || y.indexOf(3) != -1 ||
-    y.indexOf(4) != -1 || y.indexOf(5) != -1 || y.indexOf(6) != -1 || y.indexOf(7) != -1 ||
+   
+    if( y.indexOf(2) != -1 || y.indexOf(3) != -1 || y.indexOf(4) != -1 || 
+    y.indexOf(5) != -1 || y.indexOf(6) != -1 || y.indexOf(7) != -1 ||
     y.indexOf(8) != -1 || y.indexOf(9) != -1 )
     // Need to be improved
     {
@@ -30,7 +27,10 @@ function BinConvert()
     }
     else
     {
-    
+    y = parseInt(y, 2);
+    var dec = y.toString(10);
+    var hex = y.toString(16).toUpperCase();
+    var oct = y.toString(8);
     document.getElementById('bintodec').innerHTML = dec; 
     document.getElementById('bintohex').innerHTML = hex;
     document.getElementById('bintooct').innerHTML = oct;

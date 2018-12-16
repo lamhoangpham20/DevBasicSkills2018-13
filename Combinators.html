@@ -16,28 +16,22 @@
         {
             display: none;
         }
-        .button :hover
-        {
-            background-color: red
-        }
-        .button :active
-        {
-            background-color: grey;
-        }
+        
     </style>
 </head>
-<body>
-        <div id="Background"></div>
-        <div id="menu_top">
-            <ul>
-                <li><a href="./Main_Page.html" title="Home">Home</a></li>
-                <li><a href="./Number_Converter.html" title="Number Converter">Number Converter</a></li>
-                <li><a href="./Number_system_outputs.html" title="Number System Output">Number System Output</a></li>
-                <li><a href="./Combinators.html" title="combinatorics">Conbinatorics</a></li>
-                <li><a href="./Truth_table.html" title="Truth table">Truth Table</a></li>
-                <li><a href="./Random_values.html" title="Random Generators">Random Generators</a></li>
-            </ul>
-        </div><br>
+<body class="lightblue center">
+    <div id="Background"></div>
+    <div id="menu_top">
+        <ul>
+            <li><a href="./Main_Page.html" title="Home">Home</a></li>
+            <li><a href="./Number_Converter.html" title="Number Converter" class="orange">Number Converter</a></li>
+            <li><a href="./Number_system_outputs.html" title="Number System Output" class="lightpink">Number System Output</a></li>
+            <li><a href="./Combinators.html" title="combinatorics" class="lightblue">Conbinatorics</a></li>
+            <li><a href="./Truth_table.html" title="Truth table" class="lightgreen">Truth Table</a></li>
+            <li><a href="./Random_values.html" title="Random Generators" class="green">Random Generators</a></li>
+            <li><a href="./Lotto_Simulator.html" title="Lotto" class="blue">Lotto</a></li>
+        </ul>
+    </div><br>
     <div>
         <button class="button" type="menu" onclick="Show1()">Combination</button>
         <button class="button" type="menu" onclick="Show2()">Permutation</button>
@@ -49,9 +43,9 @@
     </div>
     <div>Enter k :
         <input type="number" id="kC" value="">
-    </div>
+    </div><br>
     <button type="button" onclick="Combination()">Click</button>
-    <table>
+    <table class="center">
     <tr>
         <td>Combination : </td>
         <td><div id="result1"></div></td>
@@ -64,9 +58,9 @@
         </div>
         <div> Enter k: 
             <input type="number" id="kP" value="">
-        </div>
+        </div><br>
         <button type="button" onclick="Permutation1()">Click</button>
-    <table>
+    <table class="center">
     <tr>
         <td>Permutation with replacement : </td>
         <td><div id="result2"></div></td>
@@ -79,9 +73,9 @@
         </div>
         <div> Enter k: 
             <input type="number" id="kA" value="">
-        </div>
+        </div><br>
         <button type="button" onclick="Permutation2()">Click</button>
-    <table>
+    <table class="center">
     <tr>
         <td>Permutation without replacement : </td>
         <td><div id="result3"></div></td>
