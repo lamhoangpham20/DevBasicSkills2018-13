@@ -54,11 +54,14 @@ img
 {
 margin: 0px;
 padding: 0px;
+float: left;
+
 }
 #menu_top ul li 
 {
     list-style: none;
     float: left;
+    width: 14,2%;
 }
 #menu_top ul li a
 {
