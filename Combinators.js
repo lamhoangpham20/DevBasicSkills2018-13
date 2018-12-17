@@ -1,27 +1,30 @@
+function factorial(a)
+{
+    var a;
+    for(let i = a-1 ; i>1; i--)
+    {
+        a=a*i
+    }
+    return a;
+}
 function Combination()
 {
-    var n = document.getElementById('nC').value;
-    var k = document.getElementById('kC').value;
+    var n = Number(document.getElementById('nC').value);
+    var k = Number(document.getElementById('kC').value);
+    
     if (n > k)
     {
     var x = n - k ;
     //factorial of x
-    for(let i = x-1; i >0; i--)
+    x = factorial(x);
+    for(let i=n-1; i>=k+1; i--)
     {
-        x = x * i ;   
-    } 
-    //factorial of n
-    for(let i = n-1; i >0; i--)
-    {
-      n = n * i ;   
-    }  
-    //factorial of k
-    for(let i = k-1; i >0; i--)
-    {
-        k = k * i ;   
-    } 
-    var result1 = n / (k * x);
-    document.getElementById('result1').innerHTML= result1;
+        n=n*i;
+    }
+        
+        var result = n/x;
+    
+    document.getElementById('result1').innerHTML=result;
 }
 if (n == k)
 {
@@ -39,25 +42,14 @@ if (n == k)
 
 }
 
-function Permutation1()
+function Permutation1(n,k)
 {
-    var n = document.getElementById('nP').value;
-    var k = document.getElementById('kP').value;
+    var n = Number(document.getElementById('nP').value);
+    var k = Number(document.getElementById('kP').value);
     if (n > k) 
     {
-        var x = n - k;
-        //factorial of n
-    for(let i = n-1; i >0; i--)
-    {
-      n = n * i ;   
-    }  
-    //factorial of x
-    for(let i = x-1; i >0; i--)
-    {
-        x = x * i ;   
-    } 
-    var result2 = n / x ;
-    document.getElementById('result2').innerHTML= result2; 
+        result2 = factorial(n)/factorial(n-k);
+    document.getElementById('result2').innerHTML= result2;
 }
     if (n == k)
     {
@@ -72,8 +64,8 @@ function Permutation1()
 
 function Permutation2()
 {
-    var n = document.getElementById('nA').value;
-    var k = document.getElementById('kA').value;
+    var n = Number(document.getElementById('nA').value);
+    var k = Number(document.getElementById('kA').value);
     var a = n;
     if (n >= k)
     {
